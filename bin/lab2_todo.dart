@@ -1,9 +1,15 @@
 import 'dart:io';
 import 'package:lab2_todo/todo.dart';
+import 'package:ansicolor/ansicolor.dart' ;
+
+final AnsiPen greenPen = AnsiPen()..green();
+final AnsiPen redPen = AnsiPen()..red();
+final AnsiPen bluePen = AnsiPen()..blue();
+final AnsiPen yellowPen = AnsiPen()..yellow();
 
 void printMenu() {
   print('');
-  print('ToDo список');
+  print(yellowPen(('ToDo список')));
   print('add    - добавить задачу');
   print('list   - показать все задачи');
   print('done   - отметить выполненой');
@@ -15,7 +21,7 @@ void addTodo(List<Todo> todos) {
   String? input = stdin.readLineSync();
 
   if (input == null || input.trim().isEmpty) {
-    print('Ошибка: название не может быть пустым');
+    print(redPen(('Ошибка: название не может быть пустым')));
     return;
   }
 
